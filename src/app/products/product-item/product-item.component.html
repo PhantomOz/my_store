@@ -1,1 +1,30 @@
-<p>product-item works!</p>
+<div class="card" style="width: 300px" *ngFor="let product of products">
+  <img
+    src="{{ product.url }}"
+    class="card-img-top"
+    style="max-height: 300px"
+    alt="{{ product.name }}"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">
+      {{ product.description }}
+    </p>
+    <span
+      ><b>{{ product.price | currency : "USD" : "symbol" : "1.2-2" }}</b></span
+    >
+    <select class="form-select my-2" aria-label="Default select example">
+      <option value="1" selected>1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <button class="btn btn-primary w-100">Add Cart</button>
+  </div>
+</div>
