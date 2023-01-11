@@ -14,6 +14,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,17 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
+  imports: [
+    RouterModule.forRoot([
+      { path: 'product-list', component: ProductListComponent },
+      { path: 'product-list/:id', component: ProductItemDetailComponent },
+      { path: '', redirectTo: 'product-list', pathMatch: 'full' },
+    ]),
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
