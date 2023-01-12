@@ -2,7 +2,7 @@
   <img
     src="{{ product.url }}"
     class="card-img-top"
-    style="max-height: 300px"
+    style="max-height: 300px; cursor: pointer"
     alt="{{ product.name }}"
     [routerLink]="['/product-list', product.id]"
   />
@@ -14,7 +14,11 @@
     <span
       ><b>{{ product.price | currency : "USD" : "symbol" : "1.2-2" }}</b></span
     >
-    <select class="form-select my-2" aria-label="Default select example">
+    <select
+      class="form-select my-2"
+      aria-label="quantity"
+      [(ngModel)]="quantity"
+    >
       <option value="1" selected>1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -26,6 +30,8 @@
       <option value="9">9</option>
       <option value="10">10</option>
     </select>
-    <button class="btn btn-primary w-100">Add Cart</button>
+    <button class="btn btn-primary w-100" (click)="handleCart(product)">
+      Add to cart
+    </button>
   </div>
 </div>
