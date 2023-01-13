@@ -1,7 +1,10 @@
 <section class="container-fluid h-100" role="main">
-  <div class="container">
+  <div class="container d-flex flex-wrap products justify-content-start">
     <product-item
-      class="d-flex flex-wrap products justify-content-start"
+      class="card"
+      style="width: 300px"
+      *ngFor="let product of products"
+      [product]="product"
       (addToCart)="onHandleCart($event)"
     ></product-item>
   </div>
