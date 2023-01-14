@@ -1,1 +1,35 @@
-<p>cart-form works!</p>
+<form (submit)="handleSubmit($event)">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Full name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="John Doe"
+      [(ngModel)]="name"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Address</label>
+    <input
+      type="text"
+      class="form-control"
+      id="address"
+      placeholder="Minimum(6)characters"
+      [(ngModel)]="address"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label"
+      >Credit Card number</label
+    >
+    <input
+      type="number"
+      class="form-control"
+      id="card"
+      placeholder="Minimum(16)characters"
+      [(ngModel)]="creditCard"
+    />
+  </div>
+  <button class="btn btn-primary w-100" type="submit" disabled>Checkout</button>
+</form>

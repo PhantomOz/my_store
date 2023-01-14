@@ -5,4 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './cart-form.component.html',
   styleUrls: ['./cart-form.component.css'],
 })
-export class CartFormComponent {}
+export class CartFormComponent {
+  name: string = '';
+  address: string = '';
+  creditCard: number = 0;
+
+  handleSubmit(e: Event): void {
+    e.preventDefault();
+  }
+}
