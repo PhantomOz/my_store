@@ -6,6 +6,6 @@ import { Cart } from '../../models/Cart';
   styleUrls: ['./cart-items.component.css'],
 })
 export class CartItemsComponent {
-  @Input() carts: Cart[] = [];
-  @Input() total: number = 0;
+  @Input() cart: Cart | undefined;
+  @Input() amount: number = 0;
 }

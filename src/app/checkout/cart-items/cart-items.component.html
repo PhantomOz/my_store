@@ -1,7 +1,4 @@
-<div
-  class="d-flex justify-content-between align-items-center gap-5 my-4"
-  *ngFor="let cart of carts"
->
+<div class="d-flex justify-content-between align-items-center gap-5 my-4">
   <img src="{{ cart?.url }}" style="width: 100px; border-radius: 5px" />
   <div>
     <h6>{{ cart?.name }}</h6>
@@ -9,14 +6,12 @@
     <div class="input-group mb-3">
       <span class="input-group-text">Amount:</span>
       <input
-        type="text"
+        type="number"
         class="form-control"
         aria-label="Amount of products"
-        value="{{ cart.quantity }}"
+        value="{{ cart?.quantity }}"
+        [(ngModel)]="amount"
       />
     </div>
   </div>
 </div>
-<p class="text-muted fw-bold fs-4 fst-italic">
-  Total: {{ total | currency : "USD" : "symbol" : "1.2-2" }}
-</p>

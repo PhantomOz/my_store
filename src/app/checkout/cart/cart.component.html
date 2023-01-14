@@ -1,6 +1,17 @@
 <section class="container-fluid">
-  <div class="container d-flex justify-content-center gap-3 py-4">
-    <cart-items [carts]="carts" [total]="total"></cart-items>
-    <cart-form></cart-form>
+  <div class="container d-flex justify-content-center gap-5 py-4">
+    <div class="w-50">
+      <div style="height: 62vh; overflow-y: auto">
+        <cart-items
+          *ngFor="let cart of carts"
+          [cart]="cart"
+          [amount]="cart.quantity"
+        ></cart-items>
+      </div>
+      <p class="text-muted fw-bold fs-4 fst-italic">
+        Total: {{ total | currency : "USD" : "symbol" : "1.2-2" }}
+      </p>
+    </div>
+    <cart-form class="w-50 my-2"></cart-form>
   </div>
 </section>
