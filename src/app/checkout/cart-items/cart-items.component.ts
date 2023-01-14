@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { Cart } from '../../models/Cart';
 @Component({
-  selector: 'app-cart-items',
+  selector: 'cart-items',
   templateUrl: './cart-items.component.html',
-  styleUrls: ['./cart-items.component.css']
+  styleUrls: ['./cart-items.component.css'],
 })
 export class CartItemsComponent {
-
+  @Input() carts: Cart[] = [];
+  @Input() total: number = 0;
 }

@@ -29,4 +29,7 @@ export class ProductsService {
     }
     console.log(this.cart);
   }
+  getFromCart(): Cart[] {
+    return this.cart;
+  }
 }
