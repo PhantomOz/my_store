@@ -17,4 +17,7 @@ export class CartComponent implements OnInit {
       this.total += cart.quantity * cart.price;
     });
   }
+  removeItem(product: Cart): void {
+    this.carts = this.prdService.deleteFromCart(product);
+  }
 }

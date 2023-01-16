@@ -32,4 +32,16 @@ export class ProductsService {
   getFromCart(): Cart[] {
     return this.cart;
   }
+  updateFromCart(product: Cart, amount: number): void {
+    const prod: Cart | undefined = this.cart.find(
+      (car) => car.id === product.id
+    );
+    if (prod) {
+      prod.quantity = amount;
+    }
+  }
+  deleteFromCart(product: Cart): Cart[] {
+    this.cart = this.cart.filter((car) => car.id !== product.id);
+    return this.cart;
+  }
 }

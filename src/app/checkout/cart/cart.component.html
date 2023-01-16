@@ -6,6 +6,7 @@
           *ngFor="let cart of carts"
           [cart]="cart"
           [amount]="cart.quantity"
+          (removeFromCart)="removeItem($event)"
         ></cart-items>
       </div>
       <p class="text-muted fw-bold fs-4 fst-italic">
