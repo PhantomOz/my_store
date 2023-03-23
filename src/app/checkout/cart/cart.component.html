@@ -7,6 +7,7 @@
           [cart]="cart"
           [amount]="cart.quantity"
           (removeFromCart)="removeItem($event)"
+          (updateCart)="updateCartQ($event)"
         ></cart-items>
       </div>
       <p class="text-muted fw-bold fs-4 fst-italic">

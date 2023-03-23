@@ -10,7 +10,10 @@
         class="form-control"
         aria-label="Amount of products"
         value="{{ cart?.quantity }}"
+        name="quantity"
+        min="1"
         [(ngModel)]="amount"
+        (ngModelChange)="handleAmountChange($event)"
       />
     </div>
 
