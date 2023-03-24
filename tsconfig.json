@@ -20,7 +20,8 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "types": [
-      "@angular/localize"
+      "@angular/localize",
+      "jquery"
     ],
     "lib": [
       "ES2022",
