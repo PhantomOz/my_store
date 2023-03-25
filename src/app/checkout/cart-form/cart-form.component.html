@@ -6,7 +6,10 @@
       class="form-control"
       id="name"
       placeholder="John Doe"
+      [value]="name"
       [(ngModel)]="name"
+      [required]="true"
+      name="name"
     />
   </div>
   <div class="mb-3">
@@ -15,8 +18,11 @@
       type="text"
       class="form-control"
       id="address"
+      [value]="address"
       placeholder="Minimum(6)characters"
       [(ngModel)]="address"
+      [required]="true"
+      name="address"
     />
   </div>
   <div class="mb-3">
@@ -28,8 +34,11 @@
       class="form-control"
       id="card"
       placeholder="Minimum(16)characters"
+      [value]="creditCard"
       [(ngModel)]="creditCard"
+      [required]="true"
+      name="card"
     />
   </div>
-  <button class="btn btn-primary w-100" type="submit" disabled>Checkout</button>
+  <button class="btn btn-primary w-100" type="submit">Checkout</button>
 </form>

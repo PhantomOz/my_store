@@ -32,6 +32,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     RouterModule.forRoot([
+      { path: 'confirmation', component: ConfirmationComponent },
       { path: 'cart', component: CartComponent },
       { path: 'product-list', component: ProductListComponent },
       { path: 'product-list/:id', component: ProductItemDetailComponent },

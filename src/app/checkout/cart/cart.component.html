@@ -14,6 +14,6 @@
         Total: {{ total | currency : "USD" : "symbol" : "1.2-2" }}
       </p>
     </div>
-    <cart-form class="w-50 my-2"></cart-form>
+    <cart-form class="w-50 my-2" (submit)="handleCheckOut($event)"></cart-form>
   </div>
 </section>

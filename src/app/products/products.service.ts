@@ -3,12 +3,15 @@ import { Product } from '../models/Product';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Cart } from '../models/Cart';
+import { Order } from '../models/Order';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
   cart: Cart[] = [];
+  order: Order | undefined;
+
   constructor(private http: HttpClient) {}
   index(): Observable<Product[]> {
     return this.http.get<Product[]>('../../assets/data.json');
@@ -43,5 +46,13 @@ export class ProductsService {
   deleteFromCart(product: Cart): Cart[] {
     this.cart = this.cart.filter((car) => car.id !== product.id);
     return this.cart;
+  }
+
+  createOrder(order: Order): void {
+    this.order = order;
+  }
+
+  getOrder(): Order | undefined {
+    return this.order;
   }
 }

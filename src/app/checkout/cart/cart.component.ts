@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Order } from 'src/app/models/Order';
 import { Cart } from '../../models/Cart';
 import { ProductsService } from '../../products/products.service';
 @Component({
@@ -9,7 +11,7 @@ import { ProductsService } from '../../products/products.service';
 export class CartComponent implements OnInit {
   carts: Cart[] = [];
   total: number = 0;
-  constructor(private prdService: ProductsService) {}
+  constructor(private prdService: ProductsService, private router: Router) {}
   ngOnInit(): void {
     this.getCart();
   }
@@ -30,5 +32,16 @@ export class CartComponent implements OnInit {
   updateCartQ(product: Cart): void {
     this.prdService.updateFromCart(product, product.quantity);
     this.getCart();
+  }
+
+  handleCheckOut(info: string[]): void {
+    let newOrder: Order = {
+      name: info[0],
+      total: this.total,
+      cart: this.carts,
+      address: info[1],
+    };
+    this.prdService.createOrder(newOrder);
+    this.router.navigate(['confirmation']);
   }
 }
