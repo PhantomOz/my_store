@@ -16,6 +16,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ProductGuard } from './products/product.guard';
+import { ConfirmedGuard } from './confirmation/confirmed.guard';
 
 @NgModule({
   declarations: [
@@ -32,10 +34,18 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     RouterModule.forRoot([
-      { path: 'confirmation', component: ConfirmationComponent },
+      {
+        path: 'confirmation',
+        canActivate: [ConfirmedGuard],
+        component: ConfirmationComponent,
+      },
       { path: 'cart', component: CartComponent },
       { path: 'product-list', component: ProductListComponent },
-      { path: 'product-list/:id', component: ProductItemDetailComponent },
+      {
+        path: 'product-list/:id',
+        canActivate: [ProductGuard],
+        component: ProductItemDetailComponent,
+      },
       { path: '', redirectTo: 'product-list', pathMatch: 'full' },
     ]),
     BrowserModule,
