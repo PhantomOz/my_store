@@ -35,6 +35,13 @@ export class CartComponent implements OnInit {
     });
   }
 
+  emptyCart() {
+    this.toastService.show(`Cart is empty`, {
+      classname: 'bg-danger text-light',
+      delay: 3000,
+    });
+  }
+
   getCart(): void {
     this.carts = this.prdService.getFromCart();
     console.log('cart', this.carts);
@@ -57,13 +64,17 @@ export class CartComponent implements OnInit {
   }
 
   handleCheckOut(info: string[]): void {
-    let newOrder: Order = {
-      name: info[0],
-      total: this.total,
-      cart: this.carts,
-      address: info[1],
-    };
-    this.prdService.createOrder(newOrder);
-    this.router.navigate(['confirmation']);
+    if (this.carts.length !== 0) {
+      let newOrder: Order = {
+        name: info[0],
+        total: this.total,
+        cart: this.carts,
+        address: info[1],
+      };
+      this.prdService.createOrder(newOrder);
+      this.router.navigate(['confirmation']);
+    } else {
+      this.emptyCart();
+    }
   }
 }

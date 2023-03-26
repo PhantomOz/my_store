@@ -1,44 +1,89 @@
-<form (submit)="handleSubmit($event)">
+<form
+  name="cartForm"
+  ng-app="myApp"
+  ng-controller="validateCtrl"
+  (submit)="handleSubmit($event)"
+>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Full name</label>
     <input
       type="text"
       class="form-control"
-      id="name"
+      id="fullname"
       placeholder="John Doe"
-      [value]="name"
       [(ngModel)]="name"
       [required]="true"
-      name="name"
+      name="fullname"
+      #fullname="ngModel"
+      minlength="6"
     />
+    <div
+      *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)"
+      class="alert alert-danger m-2"
+    >
+      <div *ngIf="fullname.errors?.['required']">Full-name is required.</div>
+      <div *ngIf="fullname.errors?.['minlength']">
+        Fullname must be at least 6 characters long.
+      </div>
+    </div>
   </div>
   <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Address</label>
     <input
       type="text"
       class="form-control"
-      id="address"
-      [value]="address"
+      id="addres"
       placeholder="Minimum(6)characters"
       [(ngModel)]="address"
-      [required]="true"
-      name="address"
+      required="true"
+      name="addres"
+      minlength="6"
+      #addres="ngModel"
     />
+    <div
+      *ngIf="addres.invalid && (addres.dirty || addres.touched)"
+      class="alert alert-danger m-2"
+    >
+      <div *ngIf="addres.errors?.['required']">Address is required.</div>
+      <div *ngIf="addres.errors?.['minlength']">
+        Address must be at least 6 characters long.
+      </div>
+    </div>
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label"
       >Credit Card number</label
     >
     <input
-      type="number"
+      type="text"
       class="form-control"
-      id="card"
       placeholder="Minimum(16)characters"
-      [value]="creditCard"
       [(ngModel)]="creditCard"
-      [required]="true"
       name="card"
+      id="card"
+      required="true"
+      minlength="16"
+      #card="ngModel"
+      pattern="[0-9]+"
     />
+    <div
+      *ngIf="card.invalid && (card.dirty || card.touched)"
+      class="alert alert-danger m-2"
+    >
+      <div *ngIf="card.errors?.['required']">card is required.</div>
+      <div *ngIf="card.errors?.['minlength']">
+        Credit card must be at least 16 characters long.
+      </div>
+      <div *ngIf="card.errors?.['pattern']">
+        Credit card should contain only numbers
+      </div>
+    </div>
   </div>
-  <button class="btn btn-primary w-100" type="submit">Checkout</button>
+  <button
+    class="btn btn-primary w-100"
+    type="submit"
+    [disabled]="card.invalid || addres.invalid || fullname.invalid"
+  >
+    Checkout
+  </button>
 </form>

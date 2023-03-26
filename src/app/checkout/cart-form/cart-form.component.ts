@@ -8,11 +8,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class CartFormComponent {
   name: string = '';
   address: string = '';
-  creditCard: number = NaN;
+  creditCard: string = '';
   @Output() submit: EventEmitter<string[]> = new EventEmitter();
 
   handleSubmit(e: Event): void {
     e.preventDefault();
-    this.submit.emit([this.name, this.address, String(this.creditCard)]);
+    this.submit.emit([this.name, this.address, this.creditCard]);
   }
 }

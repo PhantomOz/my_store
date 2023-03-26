@@ -50,6 +50,7 @@ export class ProductsService {
 
   createOrder(order: Order): void {
     this.order = order;
+    this.cart = [];
   }
 
   getOrder(): Order | undefined {
